@@ -1,6 +1,6 @@
 import { Provider, ContractFactory, Wallet } from "fuels";
 import { readFileSync } from 'fs';
-import abi from "../counter/out/debug/counter-abi.json";
+import abi from "../Counter/out/debug/counter-abi.json";
 
 async function main() {
 
@@ -8,7 +8,7 @@ async function main() {
     const PRIVATE_KEY = process.env.PRIVATE_KEY!;
     const wallet = Wallet.fromPrivateKey(PRIVATE_KEY, provider);
 
-    const bytecode = readFileSync("../counter/out/debug/counter.bin");
+    const bytecode = readFileSync("../Counter/out/debug/counter.bin");
 
     const factory = new ContractFactory(bytecode, abi, wallet);
     const contract = await factory.deployContract();
